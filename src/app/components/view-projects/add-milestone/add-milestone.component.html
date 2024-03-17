@@ -1,0 +1,29 @@
+<dialog id="add-milestone">
+  <div class="close" (click)="modalsService.closeModal('add-milestone')">
+    <i class="lni lni-close"></i>
+  </div>
+  <h1>add milestone {{ projectSelected.name ?? "" }}</h1>
+
+  <form [formGroup]="addMilestoneForm">
+    <fieldset>
+      <legend class="header-text small">name</legend>
+      <input type="text" formControlName="name" placeholder="milestone title" />
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">description</legend>
+      <textarea
+        formControlName="description"
+        id=""
+        cols="30"
+        rows="5"
+        placeholder="short milestone description"
+      ></textarea>
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">step</legend>
+      <input type="number" formControlName="step" id="" />
+    </fieldset>
+
+    <button (click)="addMilestone()" class="btn-main">add miletone</button>
+  </form>
+</dialog>

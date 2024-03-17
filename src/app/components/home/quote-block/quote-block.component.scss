@@ -1,0 +1,30 @@
+@import "../../../../styles/mixins/themes";
+
+.quote-box {
+  margin: 0 auto 2em;
+  position: relative;
+
+  padding: 1em;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 350px;
+
+  &::first-letter {
+    initial-letter: 6;
+    margin-right: 5px;
+    text-shadow: $shadow $mainColor;
+    color: color-mix(in lab, $mainColor, $white (50%));
+  }
+
+  hr {
+    margin: 1em 0;
+    background-color: $black;
+    border-color: $black;
+  }
+
+  .author {
+    text-align: end;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+}

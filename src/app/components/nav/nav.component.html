@@ -1,0 +1,63 @@
+<nav class="top-nav">
+  <div class="upper-part">
+    <div class="logo">plan tactiko</div>
+    <!-- <fieldset class="color-picker">
+      <input type="radio" name="theme-selector" id="regular" />
+      <input type="radio" name="theme-selector" id="pink" checked />
+      <input type="radio" name="theme-selector" id="blueGrotto" />
+    </fieldset> -->
+    <div class="fley-ley" (click)="toggleNav()">
+      <i class="lni lni-menu"></i>
+    </div>
+  </div>
+  <div class="header">
+    <h1>{{ openpage() }}</h1>
+  </div>
+</nav>
+
+<div class="side-nav" #sideNav>
+  <div class="exit-btn" (click)="toggleNav()">
+    <i class="lni lni-close"></i>
+  </div>
+  <header>
+    <div class="user-display">
+      <div class="user-image"></div>
+      <p class="header-text">Anonimous</p>
+    </div>
+    <p class="normal-text small">example&#64;email.address</p>
+  </header>
+
+  <hr />
+  <section class="nav-elements">
+    <ul>
+      <li (click)="toggleNav()" routerLink="home" routerLinkActive="active">
+        <i class="lni lni-home"></i>home
+      </li>
+      <li (click)="toggleNav()" routerLink="todos" routerLinkActive="active">
+        <i class="lni lni-hourglass"></i>todos
+      </li>
+      <li (click)="toggleNav()" routerLink="projects" routerLinkActive="active">
+        <i class="lni lni-popup"></i>projects
+      </li>
+      <li (click)="toggleNav()" routerLink="routines" routerLinkActive="active">
+        <i class="lni lni-reload"></i>routines
+      </li>
+      <li (click)="toggleNav()" routerLink="settings" routerLinkActive="active">
+        <i class="lni lni-cog"></i>settings
+      </li>
+    </ul>
+  </section>
+  <hr />
+  <p class="noti-toggler normal-text small">
+    <span class="fley-ley"
+      ><i class="lni lni-popup"></i>show notificstions</span
+    >
+    <input type="radio" name="notifiaction-toggler" id="notification" />
+  </p>
+</div>
+
+<Style> </Style>
+
+<nav class="bottom-nav">
+  <p>lan-tactiko by Munya</p>
+</nav>

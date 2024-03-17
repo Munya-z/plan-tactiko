@@ -1,0 +1,119 @@
+<div class="display-container">
+  <div class="cards-container">
+    @for(project of projects(); track project.id){
+
+    <div class="card-{{ project.displayColor }} {{ project.id }}" #project.id>
+      <div class="card-header">
+        <p class="header-text">{{ project.name }}</p>
+
+        <p>
+          @if(percentageCompleted(project.milestones) !== null){
+          <span style="margin-right: 1em">
+            {{ percentageCompleted(project.milestones) }}%
+          </span>
+          }
+          <span>{{ daysToDeadline(project.dueDate) }}&nbsp;days</span>
+        </p>
+      </div>
+
+      <div class="card-body">
+        <p class="header-text small sec-header">project decription</p>
+        <p class="normal-text">
+          {{ project.description }}
+        </p>
+      </div>
+
+      @if(allInfoInView() && selectedProject() === project.id ){
+
+      <div class="card-footer" cardNewFooter>
+        <div>
+          <p class="header-text sec-header">milestones</p>
+        </div>
+        <i (click)="toggleInfo(project.id)" class="lni lni-chevron-up"></i>
+      </div>
+
+      }@else{
+
+      <div class="card-footer" #cardInitialFooter>
+        @if (project.milestones.length > 0) {
+        <div>
+          @if(nextMilesStone(project.milestones) === -1){
+          <p class="header-text sec-header small">milestones completed</p>
+          } @if(nextMilesStone(project.milestones)!== -1){
+
+          <p class="header-text sec-header small">up comming milestone</p>
+
+          <p>
+            {{ project.milestones[nextMilesStone(project.milestones)].name }}
+          </p>
+          }
+        </div>
+
+        <i (click)="toggleInfo(project.id)" class="lni lni-chevron-down"></i>
+        } @else{
+        <div>
+          <p>no milestone</p>
+        </div>
+        <button
+          (click)="openModal('add-milestone', project, project.milestones)"
+          class="btn-tertiary right"
+        >
+          <i class="lni lni-plus"></i>
+        </button>
+        }
+      </div>
+
+      }
+      <div class="all-info {{ project.id }}" #allInfo>
+        <ul>
+          @if(project.milestones.length >= 0){ @for(milestone of
+          project.milestones; track milestone.id){
+          <li>
+            <div>
+              <p class="header-text small sec-header">{{ milestone.name }}</p>
+              <p class="normal-text">{{ milestone.description }}</p>
+            </div>
+
+            @if(milestone.status==='pending'){
+            <div class="button-container">
+              <button
+                (click)="editMilestone(project, milestone, 'done')"
+                class="btn-tertiary"
+              >
+                <i class="lni lni-checkmark"></i>
+              </button>
+              <button
+                (click)="openModal('edit-milestone', project, milestone)"
+                class="btn-disabled"
+              >
+                <i class="lni lni-eraser"></i>
+              </button>
+            </div>
+            } @if(milestone.status ==='done'){
+
+            <p class="done"><i class="lni lni-checkmark-circle"></i></p>
+            }
+          </li>
+          } }
+        </ul>
+        <div class="card-footer add">
+          <button
+            (click)="openModal('add-milestone', project, project.milestones)"
+            class="btn-tertiary right"
+          >
+            <i class="lni lni-plus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    }@empty{
+    <p>no projects</p>
+    }
+  </div>
+</div>
+
+<app-create-project></app-create-project>
+
+<app-add-milestone></app-add-milestone>
+
+<app-edit-milestone></app-edit-milestone>

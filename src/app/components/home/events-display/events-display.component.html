@@ -1,0 +1,22 @@
+<div class="listy need-center">
+  <ul>
+    @for (todoEvent of events(); track todoEvent.id){
+
+    <li>
+      <div>
+        <div class="event-name normal-text">{{ todoEvent.name }}</div>
+        <div class="date">{{ todoEvent.eventDate }}</div>
+      </div>
+      <div class="btn-container">
+        <!-- <button class="btn-main"><i class="lni lni-pencil"></i></button> -->
+        <button (click)="removeEvent(todoEvent)" class="btn-danger">
+          <i class="lni lni-close"></i>
+        </button>
+      </div>
+    </li>
+    }@empty{
+
+    <p>no events planned for yet</p>
+    }
+  </ul>
+</div>

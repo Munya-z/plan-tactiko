@@ -1,0 +1,28 @@
+<div class="listy">
+  <ul>
+    @for(toDo of toDos(); track toDo.id){
+
+    <li>
+      <div>
+        <p class="header-text small sec-header">{{ toDo.name }}</p>
+      </div>
+      @if(toDo.status === 'pending'){
+
+      <div class="button-container">
+        <button (click)="completeToDo(toDo)" class="btn-main">
+          <i class="lni lni-checkmark"></i>
+        </button>
+        <button (click)="removeToDo(toDo)" class="btn-danger">
+          <i class="lni lni-close"></i>
+        </button>
+      </div>
+      }@else{
+
+      <p class="done"><i class="lni lni-checkmark-circle"></i></p>
+      }
+    </li>
+    }@empty{
+    <P>nothing planed for today</P>
+    }
+  </ul>
+</div>

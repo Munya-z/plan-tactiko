@@ -1,0 +1,31 @@
+<dialog id="edit-routine">
+  <div class="close" (click)="modalsService.closeModal('edit-routine')">
+    <i class="lni lni-close"></i>
+  </div>
+  <h1>add Todo</h1>
+
+  <form [formGroup]="editRoutineForm">
+    <fieldset>
+      <legend class="header-text small">name</legend>
+      <input type="text" formControlName="name" placeholder="title" />
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">description</legend>
+      <textarea
+        type="text"
+        formControlName="description"
+        placeholder="description"
+      ></textarea>
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">color</legend>
+      <select type="text" formControlName="color" placeholder="priority">
+        <option value="main">main</option>
+        <option value="sec">secondary</option>
+        <option value="ter">tertiary</option>
+      </select>
+    </fieldset>
+
+    <button (click)="addRoutine()" class="btn-main">add todo</button>
+  </form>
+</dialog>

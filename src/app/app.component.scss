@@ -1,0 +1,61 @@
+@import "../styles/mixins/themes";
+@import "../styles/mixins/variables";
+$from-bottom: 20px;
+
+.floating-btn {
+  bottom: $from-bottom;
+  right: 10%;
+  z-index: 1001;
+  position: fixed;
+  border-radius: 50%;
+  padding: 1em;
+  background-color: $mainColor;
+  color: $white;
+  border: 2px solid $white;
+  outline: 2px $mainColor solid;
+
+  &.selected {
+    background-color: $white;
+    color: $mainColor;
+    border-color: $mainColor;
+    outline-color: $white;
+  }
+}
+
+.floating-menu {
+  display: none;
+
+  &.visible {
+    display: flex;
+  }
+  flex-direction: column;
+  gap: 1em;
+  justify-content: center;
+  align-items: flex-end;
+  position: fixed;
+  right: 10%;
+  bottom: calc($from-bottom + 4em);
+  transition: opacity 2s ease-in-out;
+}
+
+.menu-item {
+  display: flex;
+  gap: 10px;
+
+  span {
+    box-shadow: $shadow $mainColor;
+    padding: 1em;
+    border-radius: 50%;
+    bottom: 30vw;
+    background-color: color-mix(in lab, $mainColor, $white (30%));
+    &:first-child {
+      border-radius: $borderRad;
+    }
+  }
+
+  span:hover,
+  span:hover + span {
+    box-shadow: $shadow $secondaryColor;
+    background-color: color-mix(in lab, $secondaryColor, $white (30%));
+  }
+}

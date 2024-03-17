@@ -1,0 +1,76 @@
+<dialog id="add-routine">
+  <div class="close" (click)="modalsService.closeModal('add-routine')">
+    <i class="lni lni-close"></i>
+  </div>
+  <h1>add routine</h1>
+
+  <form [formGroup]="addRoutineForm">
+    <fieldset>
+      <legend class="header-text small">name</legend>
+      <input type="text" formControlName="name" placeholder="title" />
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">description</legend>
+      <textarea
+        type="text"
+        formControlName="description"
+        placeholder="description"
+      ></textarea>
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">color</legend>
+      <select type="text" formControlName="color" placeholder="priority">
+        <option value="main">main</option>
+        <option value="sec">secondary</option>
+        <option value="ter">tertiary</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">timeslots</legend>
+      <div class="timeslots-display">
+        @if(timeslots() !=null) {
+
+        <ul>
+          @for(timeslot of timeslots(); track timeslot) {
+          <li>
+            {{ timeslot.day }} {{ timeslot.startTime }} -
+            {{ timeslot.endTime }}
+          </li>
+          }
+        </ul>
+        }@else {
+        <p>no timeslots</p>
+        }
+      </div>
+      <button type="button" class="btn-main" (click)="addTimeslot($event)">
+        Add Timeslot
+      </button>
+
+      <div>
+        <fieldset>
+          <legend class="header-text small">date</legend>
+          <select formControlName="day">
+            <option value="Mon">monday</option>
+            <option value="Tue">tuesday</option>
+            <option value="Wed">wednesday</option>
+            <option value="Thur">thursday</option>
+            <option value="Fri">friday</option>
+            <option value="Sat">sartuday</option>
+            <option value="Sun">sunday</option>
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <legend class="header-text small">start time</legend>
+          <input type="time" formControlName="startTime" />
+        </fieldset>
+        <fieldset>
+          <legend class="header-text small">end time</legend>
+          <input type="time" formControlName="endTime" />
+        </fieldset>
+      </div>
+    </fieldset>
+
+    <button (click)="addRoutine()" class="btn-main">add todo</button>
+  </form>
+</dialog>

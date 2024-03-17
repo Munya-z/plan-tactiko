@@ -1,0 +1,25 @@
+//fonts stuff
+@mixin main_font {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+@mixin secondary_font {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin header_util {
+  @include secondary_font;
+  line-height: 1.5;
+  letter-spacing: 0.2em;
+}
+
+@mixin paragraph_util {
+  @include main_font;
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+}

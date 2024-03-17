@@ -1,0 +1,35 @@
+<dialog id="add-todo">
+  <div class="close" (click)="modalsService.closeModal('add-todo')">
+    <i class="lni lni-close"></i>
+  </div>
+  <h1>add Todo</h1>
+
+  <form [formGroup]="addTodoForm">
+    <fieldset>
+      <legend class="header-text small">name</legend>
+      <input type="text" formControlName="name" placeholder="title" />
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">description</legend>
+      <textarea
+        type="text"
+        formControlName="description"
+        placeholder="description"
+      ></textarea>
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">priority</legend>
+      <select type="text" formControlName="priority" placeholder="priority">
+        <option value="low">low</option>
+        <option value="medium">medium</option>
+        <option value="high">high Importance</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">due date</legend>
+      <input type="date" formControlName="dueDate" placeholder="dueDate" />
+    </fieldset>
+
+    <button (click)="addTodo()" class="btn-main">add todo</button>
+  </form>
+</dialog>

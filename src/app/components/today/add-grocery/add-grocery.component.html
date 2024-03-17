@@ -1,0 +1,15 @@
+<dialog id="add-grocery">
+  <div class="close" (click)="modalsService.closeModal('add-grocery')">
+    <i class="lni lni-close"></i>
+  </div>
+  <h1>add Grocery</h1>
+
+  <form [formGroup]="addGroceryForm">
+    <fieldset>
+      <legend class="header-text small">name</legend>
+      <input type="text" formControlName="name" placeholder="title" />
+    </fieldset>
+
+    <button (click)="addGrocery()" class="btn-main">add grocery</button>
+  </form>
+</dialog>

@@ -1,0 +1,79 @@
+@import "../../../styles/mixins/themes";
+
+@mixin card_style($color) {
+  &.routine {
+    box-shadow: $shadow $color;
+
+    background-color: color-mix(in lab, $color, white (80%));
+    table {
+      thead {
+        background-color: color-mix(in lab, $color, white (60%));
+      }
+    }
+  }
+}
+
+.routines-container {
+  width: 80vw;
+  max-width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin: auto;
+
+  .main {
+    @include card_style($mainColor);
+  }
+  .sec {
+    @include card_style($secondaryColor);
+  }
+  .acc {
+    @include card_style($accentColor);
+  }
+
+  .routine {
+    border-radius: 10px;
+    margin-block: 1em;
+    padding: 1em;
+    width: 100%;
+    .extra-actions {
+      display: none;
+      margin: 1em 0;
+      gap: 1em;
+      justify-content: end;
+      &.visible {
+        display: flex;
+      }
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1em;
+
+      h1 {
+        display: grid;
+        gap: 0.5rem;
+        grid-auto-flow: column;
+        place-content: center;
+      }
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th:first-child {
+        border-radius: 5px 0 0 0;
+      }
+      th:last-child {
+        border-radius: 0 5px 0 0;
+      }
+      tr,
+      th,
+      td {
+        padding: 0.5em 0;
+        text-align: -webkit-center;
+      }
+    }
+  }
+}

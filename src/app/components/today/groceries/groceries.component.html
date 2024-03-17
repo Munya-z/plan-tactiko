@@ -1,0 +1,24 @@
+<div class="listy needs-center">
+  <ul>
+    @for(item of groceries(); track item.id){
+
+    <li>
+      <div>
+        <p class="header-text small sec-header">{{ item.name }}</p>
+      </div>
+      @if(item.status === 'pending'){
+
+      <button (click)="completeGrocery(item)" class="btn-main">
+        <i class="lni lni-checkmark"></i>
+      </button>
+
+      }@else{
+
+      <p class="done"><i class="lni lni-checkmark-circle"></i></p>
+      }
+    </li>
+    }@empty{
+    <P>groceries list usually come here</P>
+    }
+  </ul>
+</div>

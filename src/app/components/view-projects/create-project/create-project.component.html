@@ -1,0 +1,62 @@
+<dialog id="create-project">
+  <div class="close" (click)="modalsService.closeModal('create-project')">
+    <i class="lni lni-close"></i>
+  </div>
+  <h1>create project</h1>
+
+  <form [formGroup]="createProjectForm">
+    <fieldset>
+      <legend class="header-text small">name</legend>
+      <input type="text" formControlName="name" placeholder="project name" />
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">description</legend>
+      <textarea
+        formControlName="description"
+        id=""
+        cols="30"
+        rows="5"
+        placeholder="short project description"
+      ></textarea>
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">due date</legend>
+      <input type="date" formControlName="dueDate" id="" />
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">display color</legend>
+      <div class="radio-container">
+        <div>
+          <label for="sec">sec</label>
+          <input
+            type="radio"
+            formControlName="displayColor"
+            id="sec"
+            value="sec"
+          />
+        </div>
+        <div>
+          <label for="main">main</label>
+          <input
+            type="radio"
+            formControlName="displayColor"
+            id="main"
+            value="main"
+          />
+        </div>
+        <div>
+          <label for="ter">ter</label>
+          <input
+            type="radio"
+            formControlName="displayColor"
+            id="ter"
+            value="ter"
+          />
+        </div>
+      </div>
+    </fieldset>
+    <button class="btn-main" (click)="createProject($event)">
+      create Project
+    </button>
+  </form>
+</dialog>

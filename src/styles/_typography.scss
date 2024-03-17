@@ -1,0 +1,37 @@
+@import "./mixins/fonts&types";
+
+h1,
+.header-text {
+  @include header_util;
+  max-width: 30ch;
+
+  font-size: 18px;
+  &.small-text {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.p-1 {
+  padding-block: 1em;
+}
+
+.we-1 {
+  font-weight: 800 !important;
+}
+
+p,
+li,
+.normal-text {
+  @include paragraph_util;
+  max-width: 60ch;
+  font-size: 12px;
+
+  &.small {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,76 @@
+@mixin make_button($color, $bgColor) {
+  background-color: $bgColor;
+
+  // color: $black;
+
+  box-shadow: $shadow $bgColor;
+  border-color: color-mix(in lab, $bgColor, $black (30%));
+  &:hover {
+    background-color: $white;
+    border-color: $bgColor;
+    color: $black;
+  }
+}
+
+button {
+  padding: 0.5rem;
+  border: $border;
+  border-radius: $borderRad;
+
+  &.btn-main {
+    @include make_button($white, $mainColor);
+    @if ($colorHue > 170) {
+      color: $white;
+    } @else {
+      color: $black;
+    }
+  }
+  &.btn-tertiary {
+    @if ($colorHue > 170) {
+      color: $white;
+    } @else {
+      color: $black;
+    }
+    @include make_button($black, $tertiaryColor);
+  }
+  &.btn-secondary {
+    @if ($colorHue<170) {
+      color: $white;
+    } @else {
+      color: $black;
+    }
+    @include make_button($white, $secondaryColor);
+  }
+  &.btn-danger {
+    color: $black;
+    @include make_button($black, $dangerColor);
+  }
+  &.btn-disabled {
+    color: $black;
+
+    @include make_button(grey, lightgrey);
+  }
+}
+
+.done {
+  text-shadow: $shadow;
+  letter-spacing: 0;
+  line-height: 0;
+  font-size: 3em;
+  color: $mainColor;
+}
+
+input[type="radio"] {
+  margin: 0.5em;
+  appearance: none;
+  padding: 0.4em;
+  border-radius: 50%;
+  outline-offset: 2px;
+  outline: 2px solid $black;
+  &:hover {
+    cursor: pointer;
+  }
+  &:checked {
+    background-color: $black;
+  }
+}

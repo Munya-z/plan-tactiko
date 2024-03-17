@@ -1,0 +1,44 @@
+<dialog id="edit-milestone">
+  <div class="close" (click)="modalsService.closeModal('edit-milestone')">
+    <i class="lni lni-close"></i>
+  </div>
+  <h1>adit milestone : {{ selectedMilestone }}</h1>
+
+  <form>
+    <fieldset>
+      <legend class="header-text small">name</legend>
+      <input type="text" placeholder="milestone title" />
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">description</legend>
+      <textarea
+        name=""
+        id=""
+        cols="30"
+        rows="5"
+        placeholder="short milestone description"
+      ></textarea>
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">step</legend>
+      <input type="number" name="" id="" />
+    </fieldset>
+
+    <div
+      class="buttomn-contaner"
+      style="
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        margin-top: 1em;
+        justify-content: space-between;
+      "
+    >
+      <button class="btn-main">edit</button>
+      <p>or</p>
+      <button (click)="deleteMilestone($event)" class="btn-danger">
+        delete milestone
+      </button>
+    </div>
+  </form>
+</dialog>

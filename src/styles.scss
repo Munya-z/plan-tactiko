@@ -1,0 +1,85 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./styles/mixins/variables";
+@import "./styles/mixins/themes";
+@import "./styles/buttons";
+@import "./styles/typography";
+@import "./styles/modals";
+@import "./styles/lists";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: lighten($mainColor, 40%);
+}
+
+.space-with-header {
+  min-height: 40px;
+}
+
+.top-space {
+  height: 10dvh;
+  min-height: 150px;
+  // background-color: lighten($tertiaryColor, 20%);
+}
+
+.display-container {
+  margin: 0 auto 0;
+  z-index: -1;
+  padding: 0 10%;
+  // min-height: 100vh;
+
+  // background-color: lighten($tertiaryColor, 20%);
+  width: 100vw;
+  overflow-x: hidden;
+  display: flex;
+  // align-items: stretch;
+  align-items: center;
+  flex-direction: column;
+  // justify-content: center;
+  gap: 2em;
+
+  img {
+    width: 60%;
+    max-width: 300px;
+    border-radius: 100%;
+  }
+  .quote {
+    display: flex;
+    flex-direction: column;
+
+    q {
+      margin: 1em 0 0;
+    }
+    span {
+      color: $mainColor;
+      opacity: 0.8;
+      text-align: right;
+    }
+  }
+
+  button {
+    // margin: 1em;
+    // width: 50%
+    max-width: 300px;
+  }
+}
+@media screen and (min-width: 850px) {
+  .flex-display-on-main {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: flex-start;
+  }
+
+  .quick-preview {
+    width: 45dvw !important;
+  }
+}

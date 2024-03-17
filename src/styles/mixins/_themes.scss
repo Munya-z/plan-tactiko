@@ -1,0 +1,44 @@
+/**
+ * Defines Sass variables for theming:
+ * - $colorHue: Base hue for generating theme colors
+ * - $hueDifference: Hue offset for generating secondary, accent, etc. colors 
+ * - $mainColor: Primary theme color
+ * - $secondaryColor: Secondary theme color 
+ * - $accentColor: Accent theme color
+ * - $tertiaryColor: Tertiary theme color
+ * - $dangerColor: Color for indicating errors/danger
+ * - $successColor: Color for indicating success
+ * 
+ * Also defines:
+ * - $shadow: Box shadow style
+ * - $borderRad: Default border radius
+ * 
+ * @mixin text-color: Mixin for setting text color based on $colorHue
+ */
+$black: #090808;
+$white: #f2eeee;
+
+// $colorHue: 210;
+$hueDifference: 15;
+
+$colorHue: 130;
+// $hueDifference: 15;
+
+$mainColor: hsl($colorHue, 76%, 57%);
+$secondaryColor: hsl($colorHue + $hueDifference, 76%, 57%);
+$accentColor: hsl($colorHue + $hueDifference * 2, 76%, 57%);
+$tertiaryColor: hsl($colorHue + $hueDifference * 3, 76%, 57%);
+$dangerColor: hsl(6, 76%, 57%);
+$successColor: hsl(162, 76%, 57%);
+
+$shadow: 0px 0px 2px;
+
+$borderRad: 10px;
+
+@mixin text-color {
+  @if ($colorHue > 200) {
+    color: $white;
+  } @else {
+    color: $black;
+  }
+}

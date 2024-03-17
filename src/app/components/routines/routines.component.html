@@ -1,0 +1,79 @@
+<div class="display-container">
+  <div class="routines-container">
+    @for(routine of routines(); track routine.id){
+
+    <section class="routine {{ routine.color }}">
+      <header>
+        <h1>
+          @if(routine.notify === true){
+
+          <input type="radio" name="" id="" checked />
+          }@else{
+          <input type="radio" name="" id="" />
+          }
+          {{ routine.name }}
+        </h1>
+        <div class="routine-menu" (click)="toggleExtraMenu(routine.name)">
+          <i class="lni lni-more-alt"></i>
+        </div>
+      </header>
+
+      <div class="extra-actions {{ routine.name }}">
+        <button class="btn-main">edit</button>
+        <button class="btn-secondary">notify</button>
+        <button (click)="removeRoutine(routine)" class="btn-danger">
+          delete
+        </button>
+      </div>
+
+      <div class="routine-description header-text small-text p-1 we-1">
+        {{ routine.description }}
+      </div>
+
+      @if(routine.timeslots.length > 0){
+
+      <div class="timeslots">
+        <table>
+          <thead>
+            <th class="header-text small-text">date</th>
+            <th class="header-text small-text">start time</th>
+            <th class="header-text small-text">stop time</th>
+          </thead>
+          <tbody>
+            @for(timeslots of routine.timeslots; track timeslots.day){
+            <tr>
+              <td>
+                {{ timeslots.day }}
+              </td>
+
+              <td>
+                {{ timeslots.startTime }}
+              </td>
+              <td>
+                {{ timeslots.endTime }}
+              </td>
+            </tr>
+
+            }
+          </tbody>
+        </table>
+      </div>
+      }@else {
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <p class="normal-text">no times set aside yet</p>
+        <button class="btn-main">add times</button>
+      </div>
+
+      }
+    </section>
+    }@empty{
+    <p>no routines setup yet</p>
+    }
+  </div>
+</div>

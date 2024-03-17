@@ -1,0 +1,89 @@
+<div class="display-container flex-display-on-main">
+  <div class="basic-view">
+    @defer (on viewport){
+    <app-quote-block></app-quote-block>
+    }@placeholder( minimum 2s){
+    <div>
+      <p style="text-align: center">a quote from the internet</p>
+      <p style="text-align: center">loading...</p>
+    </div>
+    }
+
+    <div class="cards-container">
+      <div routerLink="/todos" class="card today">
+        <i class="lni lni-hourglass"></i>
+        <hr />
+        <p class="txt-center">todos</p>
+      </div>
+      <div routerLink="/projects" class="card projects">
+        <i class="lni lni-popup"></i>
+        <hr />
+        <p class="txt-center">projects</p>
+      </div>
+      <div routerLink="/routines" class="card routines">
+        <i class="lni lni-reload"></i>
+        <hr />
+        <p class="txt-center">routines</p>
+      </div>
+      <div routerLink="/groceries" class="card groceries">
+        <i class="lni lni-shopping-basket"></i>
+        <hr />
+        <p class="txt-center">groceries</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quick-preview" style="text-align: center; position: relative">
+    <style>
+      .quick-preview {
+        width: 100vw;
+        max-width: 600px;
+        text-align: center;
+        position: relative;
+        display: grid;
+        place-content: center;
+      }
+
+      .left-btn {
+        position: absolute;
+        left: 5vw;
+        width: min-content;
+        top: 50%;
+      }
+
+      .right-btn {
+        position: absolute;
+        right: 5vw;
+        width: min-content;
+        top: 50%;
+      }
+    </style>
+
+    <div (click)="moveView('back')" class="left-btn">
+      <i class="lni lni-chevron-left"></i>
+    </div>
+    <div (click)="moveView('forward')" class="right-btn">
+      <i class="lni lni-chevron-right"></i>
+    </div>
+    @defer (on viewport){ @switch( selectedView()){ @case('events'){
+    <h1 style="margin: 1em auto">upcoming events</h1>
+    <app-events-display></app-events-display>
+    } @case ('today'){
+
+    <h1 style="margin: 1em auto">to-dos</h1>
+    <app-to-do-list></app-to-do-list>
+    }@case ('groceries'){
+
+    <h1 style="margin: 1em auto">groceries</h1>
+    <app-groceries></app-groceries>
+    } @default(){
+
+    <p>Nothing planed yet</p>
+    } } } @placeholder( minimum 2s){
+    <div>
+      <p style="text-align: center">your upcoming events</p>
+      <p style="text-align: center"><i class="lni lni-timer"></i> loading...</p>
+    </div>
+    }
+  </div>
+</div>

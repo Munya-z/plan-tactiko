@@ -1,0 +1,28 @@
+<dialog id="add-event">
+  <div class="close" (click)="modalsService.closeModal('add-event')">
+    <i class="lni lni-close"></i>
+  </div>
+  <h1>add event</h1>
+
+  <form [formGroup]="addEventForm">
+    <fieldset>
+      <legend class="header-text small">name</legend>
+      <input type="text" formControlName="name" placeholder="title" />
+    </fieldset>
+    <fieldset>
+      <legend class="header-text small">description</legend>
+      <textarea
+        type="text"
+        formControlName="description"
+        placeholder="description"
+      ></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend class="header-text small">event date</legend>
+      <input type="date" formControlName="eventDate" placeholder="dueDate" />
+    </fieldset>
+
+    <button (click)="addEvent()" class="btn-main">add event</button>
+  </form>
+</dialog>

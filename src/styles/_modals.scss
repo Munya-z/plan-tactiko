@@ -1,0 +1,84 @@
+dialog {
+  position: fixed;
+  padding: 1em;
+  top: 4em;
+  min-width: 300px;
+  height: 80dvh;
+  max-height: 600px;
+  overflow-y: scroll;
+  margin: 0 auto;
+  border: 2px solid $mainColor;
+  border-radius: $borderRad;
+  box-shadow: $shadow $mainColor;
+
+  &::backdrop {
+    background-color: $mainColor;
+    opacity: 0.3;
+  }
+
+  h1 {
+    text-align: center;
+    position: sticky;
+    top: -4%;
+    padding: 1em;
+    margin-bottom: 1em;
+    background-color: white;
+  }
+
+  .close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    z-index: 1000;
+    // font-size: 50px;
+    // background-color: red;
+  }
+
+  fieldset {
+    border: none;
+    padding-block: 0.3em 1em;
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 1em;
+      border-radius: $borderRad;
+      border: 2px solid $mainColor;
+
+      &:hover,
+      &:active {
+        border-color: $accentColor;
+      }
+    }
+
+    .radio-container {
+      display: flex;
+      gap: 1em;
+
+      div {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+
+        input[type="radio"] {
+          width: fit-content;
+          margin: 0.5em;
+          appearance: none;
+          padding: 0.4em;
+          border: none;
+          border-radius: 50%;
+          outline: 2px solid $mainColor;
+          outline-offset: 2px;
+
+          &:checked {
+            background-color: $mainColor;
+          }
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

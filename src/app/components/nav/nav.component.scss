@@ -1,0 +1,185 @@
+@import "../../../styles/mixins/themes";
+
+@mixin basic_flex_layout {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+nav {
+  @include text_color;
+  background-color: $mainColor;
+  z-index: 100;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .header {
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto;
+    padding: 0.51em 10%;
+    width: 100vw;
+    color: $black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      font-size: 28px;
+    }
+    button {
+      width: max-content !important;
+      // max-width: 50px;
+    }
+  }
+
+  .upper-part {
+    padding: 1em 10%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &.top-nav {
+    position: fixed;
+    top: 0;
+  }
+
+  &.bottom-nav {
+    position: fixed;
+    bottom: 0px;
+    padding: 1em;
+    height: max-content;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+
+    p {
+      margin: 0 auto;
+      color: white;
+      font-size: 10px;
+    }
+    .actions {
+      transform: translateY(-50%);
+      display: none;
+      gap: 2rem;
+      justify-content: center;
+
+      z-index: 900;
+      .icon-btn {
+        border-radius: 50%;
+        outline: 2px solid white;
+        background-color: rgb(221, 0, 0);
+        outline-offset: 4px;
+        padding: 1em;
+      }
+    }
+  }
+
+  .color-picker {
+    border: none;
+    display: flex;
+    gap: 1em;
+
+    #pink {
+      outline: 2px solid pink;
+      &:checked {
+        background-color: pink;
+      }
+    }
+    #blueGrotto {
+      outline: 2px solid rgb(30, 54, 195);
+      &:checked {
+        background-color: rgb(7, 40, 96);
+      }
+    }
+  }
+}
+
+.fley-ley {
+  @include basic_flex_layout();
+}
+
+.visible {
+  display: block !important;
+}
+
+.exit-btn {
+  position: absolute;
+  padding: 1em;
+  right: 1em;
+}
+
+.side-nav {
+  display: none;
+  top: 0;
+
+  position: fixed;
+  z-index: 100;
+  height: 100vh;
+  width: 70%;
+  max-width: 300px;
+  background-color: lighten($secondaryColor, 50%);
+
+  hr {
+    width: 80%;
+    margin: 2em auto;
+    border-color: $accentColor;
+  }
+
+  header {
+    margin: 10vw 10% 2em;
+    display: flex;
+    text-align: center;
+
+    flex-direction: column;
+
+    .user-display {
+      padding: 1em 0;
+      display: flex;
+      gap: 1em;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .user-image {
+      background-image: url("https://picsum.photos/id/1025/600/400");
+      background-size: cover;
+      width: 50px;
+      border-radius: 50%;
+      aspect-ratio: 1;
+    }
+  }
+  .nav-elements {
+    margin-inline: 10% 0;
+    li {
+      @include basic_flex_layout();
+      padding: 1em;
+      list-style: none;
+
+      &.active {
+        @if ($colorHue > 200) {
+          color: $white;
+        } @else {
+          color: $black;
+        }
+        // color: color-mix(in oklab, $mainColor, $black);
+        background-color: $accentColor;
+        border-radius: 10px 0 0 10px;
+      }
+    }
+  }
+
+  .noti-toggler {
+    margin: 5em 10%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .side-nav {
+    width: 100%;
+  }
+}

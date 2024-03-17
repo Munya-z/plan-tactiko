@@ -1,0 +1,67 @@
+@import "../../../styles/mixins/themes";
+
+@mixin card_mixin($color) {
+  box-shadow: $shadow $color;
+
+  i {
+    color: $color;
+  }
+
+  &:hover {
+    border-color: $color;
+    background-color: lighten($color, 20%);
+    i {
+      color: $black;
+    }
+  }
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.display-on-hover {
+  display: none;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5em;
+  margin: 1em auto;
+
+  .card {
+    border-radius: 10px;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    width: 140px;
+    align-items: center;
+
+    &.today {
+      border: 1px solid color-mix(in lab, $mainColor(30%), $black (30%));
+      @include card_mixin($mainColor);
+    }
+
+    &.projects {
+      border: 1px solid color-mix(in lab, $secondaryColor(30%), $black (30%));
+      @include card_mixin($secondaryColor);
+    }
+    &.routines {
+      border: 1px solid color-mix(in lab, $tertiaryColor(30%), $black (30%));
+      @include card_mixin($tertiaryColor);
+    }
+    &.groceries {
+      border: 1px solid color-mix(in lab, $accentColor(30%), $black (30%));
+      @include card_mixin($accentColor);
+    }
+
+    i {
+      font-size: 20px;
+      padding-inline-end: 10px;
+      margin-inline-end: 10px;
+      border-right: 2px solid;
+    }
+  }
+}

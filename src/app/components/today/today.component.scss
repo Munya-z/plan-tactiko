@@ -1,0 +1,6 @@
+@import "../../../styles/mixins/themes";
+
+.groceries-container {
+  background-color: lighten($mainColor, 50%);
+  width: 100vw;
+}

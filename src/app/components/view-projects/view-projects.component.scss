@@ -1,0 +1,94 @@
+@import "../../../styles/mixins/themes";
+
+@mixin flex_display {
+  gap: 10px;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin card_style($color) {
+  width: 80vw;
+  @include text_color;
+  max-width: 500px;
+  border-radius: $borderRad;
+  box-shadow: $shadow $color;
+  overflow: hidden;
+  margin: 0 auto;
+
+  .sec-header {
+    width: 100%;
+    font-weight: 800;
+    margin-bottom: 1em;
+    letter-spacing: 1px;
+  }
+
+  .card-header {
+    padding: 1em;
+    background-color: $color;
+    @include flex-display;
+  }
+  .card-body {
+    color: $black;
+    padding: 1em;
+  }
+  .card-footer {
+    @include flex-display;
+    background-color: color-mix(in lab, $color, $white(60%));
+    padding: 1em;
+    color: $black;
+    button {
+      width: 90px;
+      &.right {
+        grid-column-start: none;
+      }
+    }
+  }
+
+  .add {
+    background-color: $color;
+  }
+
+  .all-info {
+    color: $black;
+    display: none;
+    li {
+      padding: 1em;
+      @include flex_display();
+      border-bottom: 1px solid grey;
+
+      &:last-child {
+        border: none;
+      }
+
+      .button-container {
+        display: flex;
+        gap: 10px;
+      }
+    }
+  }
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin-bottom: 2em;
+}
+
+.visible {
+  display: block !important;
+}
+
+.card-main {
+  @include card_style($accentColor);
+}
+
+.card-sec {
+  @include card_style($mainColor);
+}
+
+.card-ter {
+  @include card_style($tertiaryColor);
+}
